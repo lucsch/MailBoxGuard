@@ -5,11 +5,11 @@
 #include <LoRa.h>
 #include <avr/sleep.h>
 
-
 //////////////////////////////////// CONFIG /////////////////////////////////////////////
 
 #define SignalBandwidth 125E3
 #define SpreadingFactor 12
+#define TransmitBattPercent 0  // Enable if using MQTT Auto Discovery Gateway for Homeassistant
 #define CodingRate 8
 #define SyncWord 0xF3
 #define PreambleLength 8
@@ -25,46 +25,39 @@ int loopcounter = 0;
 void setup() {
   pinMode(3, OUTPUT);
   digitalWrite(3, HIGH);
-  Serial.begin(9600);   //Pin6 RX Pin7 TX
+  Serial.begin(9600);   // Pin6 RX Pin7 TX
   analogReference(VDD);
   delay (5);
-
 
   if (!LoRa.begin(BAND)) {
     Serial.println("LoRaError");
     while (1);
   }
 
-  LoRa.setSignalBandwidth(SignalBandwidth);         // signal bandwidth in Hz, defaults to 125E3
-  LoRa.setSpreadingFactor(SpreadingFactor);                 // ranges from 6-12,default 7 see API docs
-  LoRa.setCodingRate4(CodingRate);        // Supported values are between 5 and 8, these correspond to coding rates of 4/5 and 4/8. The coding rate numerator is fixed at 4.
-  LoRa.setSyncWord(SyncWord);                     // byte value to use as the sync word, defaults to 0x12
-  LoRa.setPreambleLength(PreambleLength);       //Supported values are between 6 and 65535.
+  LoRa.setSignalBandwidth(SignalBandwidth);   // signal bandwidth in Hz, defaults to 125E3
+  LoRa.setSpreadingFactor(SpreadingFactor);   // ranges from 6-12,default 7 see API docs
+  LoRa.setCodingRate4(CodingRate);            // Supported values are between 5 and 8, these correspond to coding rates of 4/5 and 4/8. The coding rate numerator is fixed at 4.
+  LoRa.setSyncWord(SyncWord);                 // byte value to use as the sync word, defaults to 0x12
+  LoRa.setPreambleLength(PreambleLength);     // Supported values are between 6 and 65535.
   LoRa.disableCrc();                          // Enable or disable CRC usage, by default a CRC is not used LoRa.disableCrc();
-  LoRa.setTxPower(TxPower);                // TX power in dB, defaults to 17, Supported values are 2 to 20
-
-
-
-  
+  LoRa.setTxPower(TxPower);                   // TX power in dB, defaults to 17, Supported values are 2 to 20
 }
-
 
 void loop() {
 	
-  float volts = analogReadEnh(PIN_PB4, 12)*(1.1/4096)*(30+10)/10;
+  float volts = analogReadEnh(PIN_PB4, 12) * (1.1 / 4096) * (30 + 10) / 10;
   Serial.println(volts);
-  
 
-  if (loopcounter < 2){
+  if (loopcounter < 2) {
     delay(50);
     LoRa.beginPacket();
-    LoRa.print(NewMailCode);
+    float battery_percent = map(volts * 1000, 3600, 4200, 0, 100);
+    LoRa.print(NewMailCode + "," + battery_percent);
     LoRa.endPacket();
-    delay (10);
+    delay(10);
+  }
 
-   }
-
-  if (volts < 3.36 and loopcounter == 1 ){   // Don't change "3.36" !!
+  if (volts < 3.36 and loopcounter == 1) {   // Don't change "3.36" !!
     LoRa.beginPacket();
     LoRa.print(LowBatteryCode);
     LoRa.endPacket();
