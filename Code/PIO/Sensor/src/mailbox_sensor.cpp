@@ -28,12 +28,14 @@ void setup() {
     Serial.begin(9600);  // Pin6 RX Pin7 TX
     analogReference(VDD);
     delay(5);
+    Serial.println("Starting...");
 
     if (!LoRa.begin(BAND)) {
         Serial.println("LoRaError");
         while (1)
             ;
     }
+    Serial.println("Starting LoRa on " + String(BAND)+ " MHz");
 
     LoRa.setSignalBandwidth(SignalBandwidth);  // signal bandwidth in Hz, defaults to 125E3
     LoRa.setSpreadingFactor(SpreadingFactor);  // ranges from 6-12,default 7 see API docs
@@ -55,6 +57,7 @@ void loop() {
         LoRa.print(NewMailCode);
         LoRa.endPacket();
         delay(10);
+        Serial.println("Sending LORA packet !");
     }
 
     if (volts < 3.36 and loopcounter == 1) {  // Don't change "3.36" !!
