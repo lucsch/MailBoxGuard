@@ -2,9 +2,10 @@
 // GitHub https://github.com/PricelessToolkit/MailBoxGuard
 
 #include <Arduino.h>
-#include <LoRa.h>
 #include <SPI.h>
 #include <avr/sleep.h>
+
+#include "LoRa.h"
 
 //////////////////////////////////// CONFIG /////////////////////////////////////////////
 
