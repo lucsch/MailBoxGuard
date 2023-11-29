@@ -15,8 +15,8 @@
 #define PreambleLength 8
 #define TxPower 20
 #define BAND 868E6     // frequency in Hz (ASIA 433E6, EU 868E6, US 915E6)
-String NewMailCode = "REPLACE_WITH_NEW_MAIL_CODE"; // For Example "0xA2B2";
-String LowBatteryCode = "REPLACE_WITH_LOW_BATTERY_CODE"; // For Example "0xLBAT";
+String NewMailCode = "0xA2B2"; // For Example "0xA2B2";
+String LowBatteryCode = "0xLBAT"; // For Example "0xLBAT";
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -34,6 +34,7 @@ void setup() {
     Serial.println("LoRaError");
     while (1);
   }
+  Serial.println("Starting LoRa on " + String(BAND)+ " MHz");
 
   LoRa.setSignalBandwidth(SignalBandwidth);         // signal bandwidth in Hz, defaults to 125E3
   LoRa.setSpreadingFactor(SpreadingFactor);                 // ranges from 6-12,default 7 see API docs
@@ -61,7 +62,7 @@ void loop() {
     LoRa.print(NewMailCode);
     LoRa.endPacket();
     delay (10);
-
+    Serial.println("Sending LORA packet !");
    }
 
   if (volts < 3.36 and loopcounter == 1 ){   // Don't change "3.36" !!
