@@ -11,7 +11,7 @@ int LOOP_ACTUAL = 0;
 void setup(){
     pinMode(PIN_LATCH, OUTPUT);  // LATCH
     digitalWrite(PIN_LATCH, HIGH);
-    Serial.begin(1200);  // Pin6 RX Pin7 TX
+    Serial.begin(9600);  // Pin6 RX Pin7 TX
     analogReference(VDD);
     delay(5);
     Serial.println("Starting...");
