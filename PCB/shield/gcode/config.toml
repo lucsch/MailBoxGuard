@@ -1,0 +1,101 @@
+# This is a configuration file for autopcbtogcode
+# it will generate files for pcb2gcode
+# documentation here : https://github.com/pcb2gcode/pcb2gcode/wiki/Options:-Milling
+# documentation here : https://whynot.fail/factory/making-pcbs-at-home-milling-the-first-layer/
+
+project_name="mailboxguard_shield"
+gerber_filepath = "../gerber"
+
+[post-processing]
+remove_unsupported_grbl_commands=1
+ramp_up_motor_speed=1
+
+[generate]
+rectangle_width=[1, 0.5]
+rectangle_height=[10,10]
+rectangle_depth=[-0.035, -0.035]
+rectangle_base_coord=[0, 6]
+rectangle_spacing=2
+
+# thoses options are for all files
+[general]
+metric=1
+metricoutput=1
+zsafe=2
+zchange=3
+drill-side="front"
+# G64 is not supported by GRBL
+nog81=1
+nog64=1
+nog91-1=1
+
+# options for creating traces
+[traces]
+zwork=-0.030
+mill-feed=80
+mill-speed=20000
+mill-diameters="0.2mm" # Caluclated by pcb_mill_calc.py - 0.2mm for 0.1mm 30 delsgree endmill, 0.15 for 0.1mm 20 degree endmill
+#offset="0.4mm" # increment track size when not using voronoi
+voronoi=1
+preserve-thermal-reliefs=0
+#isolation-width="0.2mm" # Space between traces - I recommend higher than 0.5mm to be MUCH easier to sold and avoid bridges
+#milling-overlap=20%
+
+# drilling parameters
+[drilling]
+zdrill=-1.9
+drill-feed=25 # Lower Z during drilling at 25mm/s - don't go much higher, CNCs don't like drilling
+drill-speed=20000
+drills-available="0.3mm,0.4mm,0.5mm,0.6mm,0.7mm,0.8mm,0.9mm,1.0mm,1.1mm,1.2mm"
+milldrill-diameter="1.0mm"
+min-milldrill-hole-diameter="1.5mm"
+
+# Outline
+[outline]
+zcut=-1.7
+cut-feed=100
+cut-vertfeed=20
+cut-speed=20000
+cut-infeed=0.45
+cutter-diameter="1.0mm"
+bridges=1
+zbridges="-0.8mm"
+bridgesnum=2
+
+# Mask
+[mask]
+zwork=-0.001
+mill-feed=120
+mill-speed=20000
+mill-diameters="0.2mm" # Caluclated by pcb_mill_calc.py - 0.2mm for 0.1mm 30 delsgree endmill
+preserve-thermal-reliefs=1
+isolation-width="1000mm" # Space between traces - I recommend higher than 0.5mm to be MUCH easier to sold and avoid bridges
+invert-gerbers=1
+
+# TEXT
+[text]
+zwork=-0.035
+mill-feed=120
+mill-speed=20000
+mill-diameters="0.2mm "# Caluclated by pcb_mill_calc.py - 0.15mm for 0.1mm 20 delsgree endmill
+draw-gerber-lines=1
+
+# DRILL MARKING
+[drill-marking]
+zdrill=-0.035
+drill-feed=25 # Lower Z during drilling at 25mm/s - don't go much higher, CNCs don't like drilling
+drill-speed=12000
+drills-available="1.0mm"
+milldrill-diameter="1.0mm"
+onedrill=1
+
+# LIGHT BORDER
+[light-boarder]
+zcut=-0.03
+cut-feed=120
+cut-vertfeed=5
+cut-speed=20000
+cut-infeed=0.5
+cutter-diameter=0.2
+
+

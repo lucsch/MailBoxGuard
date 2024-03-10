@@ -1,2 +1,6 @@
-fp-info-cache
-mailboxguard_shield-backups/*.zip
+kicad/fp-info-cache
+kicad/mailboxguard_shield-backups/*.zip
+
+gcode/*.svg
+gcode/*.ngc
+gcode/millproject*

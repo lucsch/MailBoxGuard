@@ -1,0 +1,23 @@
+G04 #@! TF.GenerationSoftware,KiCad,Pcbnew,8.0.0*
+G04 #@! TF.CreationDate,2024-03-10T12:55:54+01:00*
+G04 #@! TF.ProjectId,mailboxguard_shield,6d61696c-626f-4786-9775-6172645f7368,rev?*
+G04 #@! TF.SameCoordinates,Original*
+G04 #@! TF.FileFunction,Profile,NP*
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 8.0.0) date 2024-03-10 12:55:54*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+G04 #@! TA.AperFunction,Profile*
+%ADD10C,0.050000*%
+G04 #@! TD*
+G04 APERTURE END LIST*
+D10*
+X74500000Y-29000000D02*
+X102500000Y-29000000D01*
+X102500000Y-82500000D01*
+X74500000Y-82500000D01*
+X74500000Y-29000000D01*
+M02*
