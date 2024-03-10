@@ -41,6 +41,7 @@
 	(setup
 		(pad_to_mask_clearance 0)
 		(allow_soldermask_bridges_in_footprints no)
+		(aux_axis_origin 69 82.5)
 		(grid_origin 69 82.5)
 		(pcbplotparams
 			(layerselection 0x0001080_7fffffff)
@@ -130,7 +131,7 @@
 				)
 			)
 		)
-		(property "Value" "1K"
+		(property "Value" "470 - 1K"
 			(at 0 1.82 90)
 			(layer "F.Fab")
 			(uuid "399b5716-f9cc-4396-b29e-20325f0849ca")

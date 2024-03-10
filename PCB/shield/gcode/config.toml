@@ -14,7 +14,7 @@ ramp_up_motor_speed=1
 rectangle_width=[1, 0.5]
 rectangle_height=[10,10]
 rectangle_depth=[-0.035, -0.035]
-rectangle_base_coord=[0, 6]
+rectangle_base_coord=[-2, 6]
 rectangle_spacing=2
 
 # thoses options are for all files
@@ -31,7 +31,7 @@ nog91-1=1
 
 # options for creating traces
 [traces]
-zwork=-0.030
+zwork=-0.040
 mill-feed=80
 mill-speed=20000
 mill-diameters="0.2mm" # Caluclated by pcb_mill_calc.py - 0.2mm for 0.1mm 30 delsgree endmill, 0.15 for 0.1mm 20 degree endmill

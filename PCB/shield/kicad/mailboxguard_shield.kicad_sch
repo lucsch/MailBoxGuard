@@ -2071,6 +2071,25 @@
 		)
 		(uuid "f55e0acb-9cf7-43c9-a923-5940c27f5b81")
 	)
+	(text_box "Une valeur de 300R serait bien (5mA de consommation avec un courrant de 1.8 (mesuré pour diode verte) J'ai seulement 470R en 1206"
+		(exclude_from_sim no)
+		(at 127 109.22 0)
+		(size 21.59 17.78)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "016aafd7-f53f-4ccc-ac3c-4affc87f63fb")
+	)
 	(text_box "R3 permet de limiter le son du buzzer entre 0 et 100 c'est pas mal"
 		(exclude_from_sim no)
 		(at 185.42 67.31 0)
@@ -2640,7 +2659,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1K"
+		(property "Value" "470 - 1K"
 			(at 121.92 114.2999 0)
 			(effects
 				(font
