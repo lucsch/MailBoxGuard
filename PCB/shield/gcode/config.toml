@@ -56,11 +56,11 @@ zcut=-1.7
 cut-feed=100
 cut-vertfeed=20
 cut-speed=20000
-cut-infeed=0.45
+cut-infeed=0.6
 cutter-diameter="1.0mm"
 bridges=1
-zbridges="-0.8mm"
-bridgesnum=2
+zbridges="-0.4mm"
+bridgesnum=4
 
 # Mask
 [mask]

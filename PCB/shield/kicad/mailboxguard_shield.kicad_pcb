@@ -2302,6 +2302,31 @@
 		(layer "Edge.Cuts")
 		(uuid "5cc8b5a6-e874-43f7-b85f-26be3ec8c053")
 	)
+	(gr_text "MailboxguardShield"
+		(at 88.25 49.75 90)
+		(layer "B.SilkS")
+		(uuid "8231d8ac-3ced-4221-bab2-471516e15887")
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+			(justify left bottom mirror)
+		)
+	)
+	(gr_text "03/24"
+		(at 91.25 60 90)
+		(layer "B.SilkS")
+		(uuid "c5e1c371-0d14-4065-83b4-ce6068ef43d5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify left bottom mirror)
+		)
+	)
 	(segment
 		(start 82.5 47.5)
 		(end 82 47)
